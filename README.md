@@ -10,13 +10,14 @@ Topics and features are not decided by committee. Sub-agents are spawned as glad
 
 | Round | Battle | Output |
 |---|---|---|
-| 0 | Recon | `problems.md` — all 16 problem statements, software-only filter applied |
+| 0 | Recon | `problems.md` + `intel.md` — 16 problem statements, software-only filter applied |
 | 1 | Topic War — one gladiator per software problem (15) | `round1-topic-war/` |
 | 2 | Feature War — 5 feature gladiators on the champion | `round2-feature-war/` |
 | 3 | Final war plan | `warplan.md` |
 
-## Current status
+## Standing — Round 1 verdict rendered
+
 - [x] Round 0 — Recon complete
-- [ ] Round 1 — Topic War
-- [ ] Round 2 — Feature War
+- [x] Round 1 — Topic War: **CHAMPION = PS-WEB-01 — Build Your Own Mini-Cloud Hosting Platform** (gladiator HEROKILL). Runner-up: PS-CYB-02 (The Warden). Dark horse: PS-WEB-02 (Durabilis). Full verdict: `round1-topic-war/emperor-verdict.md`
+- [ ] Round 2 — Feature War (in progress)
 - [ ] Round 3 — Final warplan

@@ -46,7 +46,16 @@
 | 4 | SCRUB THE INCIDENT 事故拖拽 | CHRONOS | playhead 回拖，日志肉眼倒流（最小 scrubber 版） | 终端文字当众倒流，定格死因行 |
 | 5 | THE ROAR 声浪处刑 | FURIOSA | 三容器编号，喊声最高者当场处决 | 投票的彩排 |
 
-已斩：扩容滑块（后台管理系统气质）；16x 逐帧时间旅行（降级为回放附属）。
+已斩：扩容滑块（后台管理系统气质）；16x 逐帧时间旅行（降级为回放附属）。第一波六学派海选亦斩：THE SÉANCE 流量重放（等于再写第二个产品）、TWIN PARADE 蓝/绿双版本（5 小时买 200ms 的无人可见）、BRANCH PREVIEW 三版本并行（台上状态翻三倍）、APP STORE 一键 starters（离题）、真随机轮盘（台上开随机之枪）、CRT 扫描线特效（截图好看，后排看不清）。完整斩杀令见 `round2-feature-war/emperor-verdict-wave1-six-schools.md`。
+
+### 4.3 STRETCH 军械库（第 20 小时全绿才领取，按序牺牲；源自 Wave-1 六学派裁决 Tier 2）
+| # | 代号 | 一句话 | 工时 |
+|---|---|---|---|
+| 1 | GATE OF GREEN 绿门 | 仓库自带测试套件在构建内运行，红则拒绝上线——"no green, no live" | ~4h |
+| 2 | DEMO DIRECTOR MODE 导演台 | 隐藏热键逐拍跳转——彩排挂具，提前造好 | ~2h |
+| 3 | GREEN MEANS LIVE 绿脉冲 | 合成流量绿色脉络随心跳明灭，回滚落地即回归 | ~3h |
+| 4 | .herokill.yml 契约 | env / 健康检查 / 回滚策略声明在仓库里——复活即契约 | ~3h |
+| 5 | THE CAGE 牢笼 | --cpus / --memory 硬限；现场部署死循环应用，仪表飙升变红，当场扼杀 | ~3h |
 
 ## 5. 24 小时施工序（Round 1 现场执行）
 | 阶段 | 里程碑 |
@@ -75,6 +84,8 @@
 
 （3 分钟版砍 THE ROAR；5 分钟版留作终幕。）
 
+**观众互动兜底梯**：预设队友坐第三排"应征"上场 → 若全场僵住，主持人亲自按下同一套攻击（剧本零损失）→ 终极兜底：定时自尽的"拒死者"演示应用全程在状态墙上循环赴死复活（混沌面板定时注入 + 复活计数器），剧场永不停场；WS 中断 → 下一拍边界整页重载（时间轴已落库，一秒不丢）。
+
 ## 7. Round 0 十页 deck（英文，匿名提交）
 | 页 | 标题 | 要点 |
 |---|---|---|
@@ -99,7 +110,7 @@
 | 剧本超时/忘词 | 第 18 小时剧本冻结、只修不添；一人专任导演；计时员 + 全幕彩排三遍 |
 
 ## 9. 六维自检（战前照镜）
-- **功能面**：9 项 table stakes + 5 式独门——满地武器。
+- **功能面**：9 项 table stakes + 5 式独门 + 5 件 stretch 军械——满地武器。
 - **24h 可行性**：全是日常栈（PHP/JS/TS + Docker + CI），每式标注真工程 / 剧场包装分层。
 - **Demo 震撼力**：60 秒 KILL SHOT = 亲手处刑 + 全场倒数 + 定格验尸。
 - **差异化**：死亡剧场 + 验尸叙事 + 任意秒回放——赛道内无人认领。
@@ -108,4 +119,4 @@
 
 ---
 
-*Ruled by the Emperors of Round 1 & Round 2; scribed into law by the war room. 下一战场：把 §7 铸成十页匿名 deck，交上 Round 0。*
+*Ruled by the Emperors of Round 1 & Round 2（功能之战两波：Wave 1 六学派海选出初稿名单 → Wave 2 四学派终审定律，战史全档见 `round2-feature-war/`）; scribed into law by the war room. 下一战场：把 §7 铸成十页匿名 deck，交上 Round 0。*

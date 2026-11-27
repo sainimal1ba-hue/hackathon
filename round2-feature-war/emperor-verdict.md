@@ -1,68 +1,66 @@
-# Round 2 — The Emperor's Verdict（功能之战 · 皇帝裁决书）
+# Round 2 — The Emperor's Verdict (Feature War · The Imperial Ruling)
 
-*皇帝裁决四位功能角斗士 × 六维评分（FS 功能面 / F24 可行性 / WOW 震撼力 / DIFF 差异化 / CROWD 观众缘 / FIT 团队契合，各 0–10，满分 60）。裁决对象：PS-WEB-01 HEROKILL 的最终功能名单。*
+*The Emperor judged four feature gladiators on six axes (FS feature surface / F24 feasibility / WOW demo impact / DIFF differentiation / CROWD crowd appeal / FIT team fit, 0–10 each, 60 max). Under judgment: the final feature roster of PS-WEB-01 HEROKILL.*
 
 ---
 
-## 皇帝裁决书 · Round 2「功能之战」
+## The Imperial Court · Round 2 "Feature War"
 
-**开场判词**
-四份战书，四种兵器：一人造死，一人造真，一人造记忆，一人造声浪。朕只问终局之问——观众投票之夜，谁的兵器能让满场的手同时举起？看台已清点，血迹已验讫。宣判。
+**Opening ruling.** Four battle letters, four weapons: one makes death, one makes realness, one makes memory, one makes sound. The throne asks only the final question — on the night of the audience vote, whose weapon can lift every hand in the hall at once? The stands are counted, the blood verified. Judgment is rendered.
 
-**计分板**（每维 0–10，满分 60）
+**Scoreboard** (each axis 0–10, 60 max)
 
-| 角斗士 | FS | F24 | WOW | DIFF | CROWD | FIT | 总分 |
+| Gladiator | FS | F24 | WOW | DIFF | CROWD | FIT | Total |
 |---|---|---|---|---|---|---|---|
-| KILLSTREAK 弑容器者 | 8 | 8 | 9 | 8 | 9 | 9 | **51** |
-| ARCHITECTUS 筑云者 | 9 | 8 | 7 | 8 | 7 | 9 | **48** |
-| FURIOSA 暴怒者 | 4 | 9 | 10 | 6 | 10 | 8 | **47** |
-| CHRONOS 时之主 | 8 | 6 | 8 | 9 | 6 | 7 | **44** |
+| KILLSTREAK | 8 | 8 | 9 | 8 | 9 | 9 | **51** |
+| ARCHITECTUS | 9 | 8 | 7 | 8 | 7 | 9 | **48** |
+| FURIOSA | 4 | 9 | 10 | 6 | 10 | 8 | **47** |
+| CHRONOS | 8 | 6 | 8 | 9 | 6 | 7 | **44** |
 
-- **弑容器者**：唯一把故障做成产品入口；戏剧能落地，落地即戏剧。
-- **筑云者**：最宽的真，最冷的台——钢筋俱备，独缺心跳。
-- **暴怒者**：零基建，十分剧场；无骨之皮，终须借尸还魂。
-- **时之主**：最贵的护城河，最险的赌注；观众未必爱调试器。
+- **KILLSTREAK**: the only one who turned failure into the product's front door; the theater ships, and shipping is theater.
+- **ARCHITECTUS**: the widest truth, the coldest stage — all rebar, no heartbeat.
+- **FURIOSA**: zero infrastructure, ten-tenths theater; skin without bones must eventually borrow a corpse to raise the soul.
+- **CHRONOS**: the most expensive moat, the most dangerous bet; the audience may not love a debugger.
 
-**冠军裁决**
-KILLSTREAK 加冕。功能之战，冠的是兵器不是导演：死亡系统是全剧唯一删不掉的主角，真枪实弹、笼锁得当，且全场只有它能让高潮被评委亲手扣响。朕奖其稳，更奖其毒。FURIOSA 收其剧本为军规，ARCHITECTUS 收其钢筋为舞台，CHRONOS 降其时间旅行为回放。
+**Champion ruling.** KILLSTREAK is crowned. The feature war crowns weapons, not directors: the death system is the only un-cuttable protagonist of the whole play — live ammunition, properly caged, and the only act whose climax is pressed by the judge's own hand. We reward its stability, and reward its poison more. FURIOSA's script is adopted as military law; ARCHITECTUS's rebar becomes the stage; CHRONOS's time travel is cut down to a minimal scrubber + replay.
 
-**最终合并名单**
+**Final merged roster**
 
-a. TABLE STAKES（去重九项）
-1. git push 即部署：bare repo+post-receive hook，评委亲手敲，预烤层伪装热启动
-2. 零配置栈探测：扫 composer/package/静态，规则表直出 Dockerfile+拓扑
-3. 域名+HTTPS：预铸 wildcard 证书+本地 DNS override，离线亮锁
-4. 健康检查：轮询+连续失守门限，心跳入时间轴
-5. 自动回滚：绿色镜像常驻缓存，<10 秒切回
-6. 混沌四型：毒代码/依赖爆炸/内存泄漏/kill -9，全数 cgroup 笼锁
-7. 死亡记录：exit code 验尸（137=OOM、143=SIGTERM），编号入册、落 SQLite 事件流
-8. 容器状态墙：大字三色网格，三十米可读，1s WebSocket 推送
-9. 日志流：stdout 瀑布可 grep，同源落事件表
+a. TABLE STAKES (nine, deduplicated)
+1. git push is deploy: bare repo + post-receive hook, typed by the judge's own hand, pre-baked layers masquerading as a hot start
+2. Zero-config stack detection: scan composer / package / static; a rules table emits the Dockerfile + topology directly
+3. Domain + HTTPS: pre-minted wildcard cert + local DNS override; the lock lights offline
+4. Health checks: polling + consecutive-failure threshold; heartbeats land in the timeline
+5. Auto-rollback: a green image cached permanently; switch back in <10 s
+6. Four chaos types: poison code / dependency bomb / memory leak / kill -9, all caged by cgroups
+7. Death records: exit-code autopsy (137=OOM, 143=SIGTERM), numbered and filed, appended to the SQLite event stream
+8. Container status wall: big-type three-color grid, readable at thirty meters, 1 s WebSocket pushes
+9. Log stream: grep-able stdout waterfall, same source appended to the event table
 
-b. SIGNATURE MOVES（五式）
-1. **评委之铳**（KILLSTREAK）：评委亲手处刑、亲手赦免。Demo：红灯频闪中按下复活，十秒心跳回归。可行性：真实现+CI 排练——放行。
-2. **三秒起飞**（ARCHITECTUS）：评委亲手 push，日志瀑布后三秒亮锁。可行性：预烤镜像层——放行。
-3. **复活倒计时**（FURIOSA）：红墙压屏，全场齐喊十、九、八，计时停在 00:07。可行性：纯编排零基建——放行。
-4. **事故拖拽**（CHRONOS）：playhead 回拖，日志肉眼倒流。可行性：斩为最小 scrubber、开机先落库——有条件放行。
-5. **声浪处刑**（FURIOSA）：三容器编号，喊声最高者当场处决——投票的彩排。可行性：主持人耳判即可——放行。
-（斩：扩容滑块——后台管理系统；16x 逐帧降为回放附属。）
+b. SIGNATURE MOVES (five)
+1. **JUDGE'S TRIGGER** (KILLSTREAK): the judge executes the kill personally, pardons personally. Demo: press resurrect amid the flashing red; the ten-second heartbeat returns. Feasibility: real implementation + CI rehearsal — APPROVED.
+2. **THREE-SECOND LIFT** (ARCHITECTUS): the judge pushes personally; after the log waterfall the lock lights in three seconds. Feasibility: pre-baked image layers — APPROVED.
+3. **RESURRECTION WINDOW** (FURIOSA): the red wall fills the screen; the crowd chants ten, nine, eight; the timer freezes at 00:07. Feasibility: pure choreography, zero infrastructure — APPROVED.
+4. **SCRUB THE INCIDENT** (CHRONOS): drag the playhead back; the logs visibly run backwards. Feasibility: cut to a minimal scrubber, boot-logged from power-on — APPROVED WITH CONDITIONS.
+5. **THE ROAR** (FURIOSA): three numbered containers; the loudest shout gets executed on the spot — a rehearsal for the vote. Feasibility: the MC's ear is the judge — APPROVED.
+(Executed: the scale slider — admin-panel energy; 16x frame-by-frame downgraded to a replay appendix.)
 
 c. KILL SHOT
-那六十秒＝评委亲手毒死自己亲手部署的版本→红墙长鸣→全场齐声倒数→00:07 绿色脉冲复活→playhead 回拖定格"它死于这行日志"。一只手杀，一只手赦，满场嘴喊——票自会来。
+Those sixty seconds = the judge personally poisons the version they personally deployed → the red wall blares → the crowd chants the countdown together → 00:07 green-pulse resurrection → the playhead drags back and freezes on "it died on this log line." One hand kills, one hand pardons, the whole hall shouts — the votes will come.
 
-**24 小时施工序**
-- H0–2 冻结地基：事件表 schema+append-only 开机落库；四型混沌裸跑通
-- H2–6 出生链：push→hook→构建→绿灯→亮锁，镜像预烤入库
-- H6–10 死亡链：注入+门限+红灯+死亡证明
-- H10–14 复活链：绿色缓存回滚+状态墙+心跳图
-- H14–17 时间轴：最小 scrubber（日志倒流+回放）；全量时间旅行即刻斩首
-- H17–18 剧本冻结：三分钟表接管，音效/证书/repo 全预烤
-- H18–22 全链彩排进 CI：含评委怯场预案、dead-man switch
-- H22–24 压测、备份镜像、睡眠
+**24h build order**
+- H0–2 Freeze the foundation: event-table schema + append-only boot logging; all four chaos types bare-running
+- H2–6 Birth chain: push → hook → build → green light → lock; images pre-baked into the registry
+- H6–10 Death chain: injection + threshold + red light + Death Certificate
+- H10–14 Resurrection chain: green-cache rollback + status wall + heartbeat graph
+- H14–17 Timeline: minimal scrubber (log rewind + replay); full time travel decapitated on the spot
+- H17–18 Script freeze: the three-minute sheet takes over; audio / certs / repo all pre-baked
+- H18–22 Full-chain rehearsal into CI: including the judge-stage-fright contingency and the dead-man switch
+- H22–24 Stress test, backup images, sleep
 
-**三大风险与对策**
-1. 现场 docker build 陷泥潭→镜像 12 月 3 日预烤入库，失败自动降级"预制层+差异层"，观众无感
-2. 死亡系统当场暴毙→cgroup 笼+常驻绿色镜像+现场复活脚本兜底
-3. 时间轴空白或失控→开机先落库、scrubber 最小化、预烤"黄金事故"录制兜底
+**Three risks and counters**
+1. On-site docker build sinks into a swamp → images pre-baked into the registry on Dec 3; on failure auto-degrade to "pre-baked layer + diff layer," the audience never knows
+2. The death system dies on stage → cgroup cage + a permanently standing green image + an on-site resurrection script as backup
+3. Blank timeline or runaway UI → boot-first logging, scrubber kept minimal, a pre-baked "golden incident" recording as backup
 
-宣判完毕，退朝。
+Judgment rendered; court adjourned.

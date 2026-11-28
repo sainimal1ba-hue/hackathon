@@ -35,6 +35,8 @@ mv /tmp/deck_meta.pdf HEROKILL_Round0_Deck.pdf
 pdftoppm -r 60 -jpeg HEROKILL_Round0_Deck.pdf /tmp/render/page
 ```
 
+独立工作流图（slide 4 同源，1160×560）：`workflow_diagram.html` 同管线渲染（`--width 1160px --height 560px --nopaged`，QA 加 `--poster`），PNG 用 `pdftoppm -r 150 -png` 导出。
+
 ## 本项目踩过的坑（勿重蹈）
 
 1. **`cover_validate.js` 对本类文档是误报源**：它是给 Report/Academic 的绝对定位封面用的；对并排表格单元格/同行 flex 元素会报假的 text↔text 重叠。技能文件地图明言"Do NOT run on posters or documents"。本管线以全页目检代替它。
@@ -43,6 +45,7 @@ pdftoppm -r 60 -jpeg HEROKILL_Round0_Deck.pdf /tmp/render/page
 4. **@media screen 缩放块必须存在**（浏览器预览用，不影响打印）。
 5. **960px = 720pt = 10 英寸；540px = 405pt = 5.625 英寸**——QA 报 254×143mm 即正确。
 6. **二进制 PDF 不走 push_files**（文本通道会毁掉 blob）：成品 PDF 直接交付用户，仓库只存 HTML 源 + 内容 + 手册。
+7. **flex 链条 max-content 陷阱（slide 4 工作流图踩过）**：sublabel 单行不换行会把 flex 节点撑到比主标题还宽，链条随之掉行。三件套防：`.chain { flex-wrap: nowrap }`、`.node { max-width }` 封顶、长 sublabel 显式 `<br>`。宽度必须用 fontTools 量实际 woff2，别猜。
 
 ## 修改守则
 

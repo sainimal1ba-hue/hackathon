@@ -49,6 +49,9 @@ Color never carries meaning alone — every state is color + icon + label. Scrub
 H0–2 tokens, grid, and the event-stream JSON spine (one array drives wall, killfeed, scrubber, certificates). H2–6 overture + terminal. H6–10 weapon picker, death flood. H10–14 countdown freeze, roar, certificate template. H14–18 scrubber. H18–21 killfeed wall, green-lock beat, JOIN THE HOUSE. H21–24 reduced-motion, OG card, projector test, live-demo rehearsal.
 
 ## 10. Image assets
-Full generation prompts: `image_prompt.md` (7 assets, one style-locked prompt each).
+Full generation prompts: `image_prompt.md` (v2 — the sealed Flow law: seven assets, the OPERA LOCK, delivery specs, the 60-second acceptance check). The v1 Flow outputs were retried on 2026-11-28: 5 KILL / 2 FIX / 0 KEEP — see `image_audit.md`. Regenerate all seven under v2 before the site build.
+
+## 11. Hero animation
+The Act 01 hero animation is law in `hero_animation.md` — THE CHANT, champion of the Animation War (53/60; war history in `animation_war.md`). Three Flow clips (VIGIL-RED / BREAKER / SAINT) chained frame-to-frame; the DOM is the clock; the death is a single-frame cut; the kill frame gets a gold-stamped certificate with the visitor's real timestamp.
 
 **The crown is struck. Build the Opera — and let the room count to seven.**

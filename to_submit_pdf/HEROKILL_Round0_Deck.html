@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HEROKILL — Round 0 Deck (PS-WEB-01)</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+  @page { size: 960px 540px; margin: 0; }
+
+  :root {
+    --ink: #161619;
+    --muted: #6E6E76;
+    --hairline: #E7E7EA;
+    --red: #FF1E27;
+    --green: #00A65A;
+  }
+
+  html, body {
+    margin: 0; padding: 0;
+    width: 960px;
+    background: #FFFFFF;
+    font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .page {
+    width: 960px; height: 540px;
+    position: relative;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    padding: 42px 56px 58px 56px;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ---- chrome ---- */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 10px; margin-bottom: 22px;
+  }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .pageno {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10px; color: var(--muted);
+  }
+  .footbar {
+    position: absolute; left: 56px; right: 56px; bottom: 22px;
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--hairline);
+    padding-top: 8px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 9px; color: var(--muted); letter-spacing: 0.02em;
+  }
+
+  /* ---- content ---- */
+  h1 {
+    font-size: 27px; line-height: 1.18; font-weight: 700;
+    margin: 0 0 20px 0; letter-spacing: -0.01em; max-width: 780px;
+  }
+  .r { color: var(--red); }
+  .g { color: var(--green); }
+
+  ul.body { list-style: none; margin: 0; padding: 0; }
+  ul.body li {
+    position: relative;
+    padding-left: 18px; margin-bottom: 13px;
+    font-size: 13.5px; line-height: 1.5;
+  }
+  ul.body li::before {
+    content: ""; position: absolute; left: 0; top: 8px;
+    width: 6px; height: 6px; background: var(--ink);
+  }
+  ul.body li strong { font-weight: 700; }
+  .kicker {
+    margin-top: 18px; padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12.5px; color: var(--muted); font-weight: 500;
+  }
+  .kicker .r { font-weight: 700; }
+
+  .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+  /* ---- cover ---- */
+  .cover { padding-top: 74px; }
+  .cover-eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted);
+    text-transform: uppercase; margin-bottom: 26px;
+  }
+  .cover-title {
+    font-size: 88px; font-weight: 700; letter-spacing: -0.02em;
+    line-height: 0.95; margin: 0 0 8px 0;
+  }
+  .cover-line { width: 560px; height: 26px; margin: 10px 0 20px 4px; display: block; }
+  .cover-pitch { font-size: 19px; font-weight: 500; margin: 0 0 34px 0; }
+  .meta { display: block; }
+  .meta .row {
+    display: flex; margin-bottom: 9px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; line-height: 1.5;
+  }
+  .meta .k { width: 76px; color: var(--muted); letter-spacing: 0.1em; }
+  .meta .v { color: var(--ink); }
+
+  /* ---- two column ---- */
+  .cols { display: flex; gap: 36px; }
+  .col { flex: 1; min-width: 0; }
+
+  /* ---- build table ---- */
+  table.build {
+    width: 100%; border-collapse: collapse;
+    font-size: 11.5px; line-height: 1.4;
+  }
+  table.build td {
+    border-top: 1px solid var(--hairline);
+    padding: 6.5px 8px 6.5px 0; vertical-align: top;
+  }
+  table.build td.t {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; color: var(--red); font-weight: 700;
+    width: 64px; white-space: nowrap; padding-right: 10px;
+  }
+
+  /* ---- architecture chain ---- */
+  .chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin-bottom: 14px; }
+  .unit { display: flex; align-items: stretch; }
+  .node {
+    box-sizing: border-box; border: 1px solid #D8D8DC; background: #F7F7F8;
+    padding: 8px 10px; font-size: 12px; line-height: 1.3; font-weight: 500;
+  }
+  .node small { display: block; font-weight: 400; color: var(--muted); font-size: 10.5px; margin-top: 2px; }
+  .arrow {
+    align-self: center; padding: 0 5px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px; color: var(--muted);
+  }
+  /* ---- workflow diagram ---- */
+  .flow { margin-top: 2px; }
+  .lane { display: flex; align-items: stretch; gap: 10px; margin-bottom: 6px; }
+  .lane-label {
+    flex: none; width: 48px; align-self: center;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); text-align: right; line-height: 1.5;
+  }
+  .lane .chain { flex: 1; margin-bottom: 0; flex-wrap: nowrap; }
+  .lane .chain .node { font-size: 11px; padding: 6px 8px; max-width: 132px; }
+  .lane .chain .node small { font-size: 9.5px; margin-top: 1px; }
+  .node.hot { border-color: var(--red); color: var(--red); }
+  .node.rev { border-color: var(--green); color: var(--green); }
+  .spinebar {
+    border: 1px solid #D8D8DC; background: #F7F7F8;
+    padding: 8px 12px; font-size: 12px; font-weight: 500;
+  }
+  .spinebar small { color: var(--muted); font-weight: 400; font-size: 10.5px; }
+  .lane .spinebar, .lane .sinks { flex: 1; }
+  .lane .sinks { margin-bottom: 0; }
+  .vconnect {
+    display: flex; justify-content: space-between;
+    height: 14px; margin: 0 24px 6px 58px;
+  }
+  .vtick { width: 1px; height: 14px; background: #C9C9CF; }
+  .sinks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  .sink {
+    border: 1px solid #D8D8DC; padding: 7px 12px;
+    font-size: 11.5px; font-weight: 500; background: #FFFFFF;
+  }
+
+  /* ---- metrics ---- */
+  .grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px; }
+  .card {
+    box-sizing: border-box; width: 275px; height: 104px;
+    border: 1px solid var(--hairline); padding: 13px 18px 9px 18px;
+  }
+  .num { font-size: 27px; font-weight: 700; line-height: 1; margin-bottom: 7px; letter-spacing: -0.01em; }
+  .lbl { font-size: 10.5px; line-height: 1.45; color: var(--muted); }
+
+  /* ---- refs ---- */
+  ol.refs { list-style: none; margin: 0; padding: 0; counter-reset: ref; }
+  ol.refs li {
+    counter-increment: ref;
+    position: relative; padding-left: 34px; margin-bottom: 11px;
+    font-size: 13px; line-height: 1.5;
+  }
+  ol.refs li::before {
+    content: counter(ref, decimal-leading-zero);
+    position: absolute; left: 0; top: 1px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; color: var(--red); font-weight: 700;
+  }
+  ol.refs .src { color: var(--muted); }
+
+  /* ---- demo beat table ---- */
+  table.beats { width: 100%; border-collapse: collapse; font-size: 12px; line-height: 1.45; }
+  table.beats td {
+    border-top: 1px solid var(--hairline); padding: 6.5px 10px 6.5px 0; vertical-align: top;
+  }
+  table.beats td.t {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; color: var(--muted); width: 52px; white-space: nowrap; font-weight: 700;
+  }
+  table.beats td.t.hot { color: var(--red); }
+  table.beats td.t.rev { color: var(--green); }
+
+  @media screen {
+    html {
+      height: auto; display: flex; justify-content: center;
+      background: #FFFFFF;
+    }
+    body {
+      transform-origin: top center;
+      scale: min(1, calc(100vw / 960));
+      margin: 0 auto;
+      box-shadow: 0 0 40px rgba(0,0,0,0.12);
+    }
+    .page { outline: 1px solid var(--hairline); margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 · COVER ============ -->
+<div class="page cover">
+  <div class="cover-eyebrow">Round 0 · Build Your Base — Anonymous Submission</div>
+  <div class="cover-title">HEROKILL</div>
+  <svg class="cover-line" viewBox="0 0 560 26" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="0,13 180,13 196,13 204,13 214,3 226,23 238,13 560,13"
+      fill="none" stroke="#FF1E27" stroke-width="2"/>
+    <polyline points="470,13 500,13 514,5 530,21 544,13 560,13"
+      fill="none" stroke="#00A65A" stroke-width="2"/>
+  </svg>
+  <p class="cover-pitch">The mini-cloud you can watch die and resurrect.</p>
+  <div class="meta">
+    <div class="row"><span class="k">TRACK</span><span class="v">Web &amp; Applications — PS-WEB-01 · Build Your Own Mini-Cloud Hosting Platform</span></div>
+    <div class="row"><span class="k">TEAM</span><span class="v">Anonymous — Round 0 codename: HEROKILL</span></div>
+    <div class="row"><span class="k">EVENT</span><span class="v">Clash of Commits · IEEE RAS VITC Chennai · 4–5 December 2026</span></div>
+  </div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Round 0 · Build Your Base</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 2 · PROBLEM DEFINITION ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">Problem Definition</span>
+    <span class="pageno">02 / 08</span>
+  </div>
+  <h1>Deploying is a gamble. Failure hides behind dashboards.</h1>
+  <ul class="body">
+    <li>Push-to-deploy platforms end at a green <strong>"deploy" button</strong>. When a container dies, you dig raw logs by hand.</li>
+    <li><strong>Rollback is manual archaeology</strong> — no record of what died, when, or why.</li>
+    <li>PS-WEB-01 asks for <strong>build → run → isolate → monitor → auto-rollback</strong>. Most clans will ship the first two and a status page.</li>
+    <li>What nobody builds: <strong>failure as a first-class object</strong> — recorded, replayable, survivable.</li>
+  </ul>
+  <div class="kicker">The obvious build stops at the deploy button. <span class="r">We stop at the resurrection.</span></div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 3 · PROPOSED SOLUTION ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">Proposed Solution</span>
+    <span class="pageno">03 / 08</span>
+  </div>
+  <h1>HEROKILL: push it, poison it, watch it come back.</h1>
+  <ul class="body">
+    <li><strong>git push is deploy</strong> — bare repo + post-receive hook; stack detection emits the Dockerfile and process topology with zero config.</li>
+    <li><strong>Four chaos weapons</strong> — poison code, dependency bomb, memory leak, kill -9 — each caged by cgroups, so the blast never leaves the cage.</li>
+    <li><strong>Auto-rollback</strong> to the last green image in &lt;10 s, target 00:07, fired the moment health checks fail.</li>
+    <li><strong>Every death files a numbered Death Certificate</strong> — exit-code autopsy: 137 = out of memory, 143 = SIGTERM.</li>
+    <li><strong>Signature moves:</strong> JUDGE'S TRIGGER · THREE-SECOND LIFT · RESURRECTION WINDOW · SCRUB THE INCIDENT · THE ROAR.</li>
+  </ul>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 4 · SYSTEM ARCHITECTURE ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">System Architecture</span>
+    <span class="pageno">04 / 08</span>
+  </div>
+  <h1>One append-only event spine, boot to autopsy.</h1>
+  <div class="flow">
+    <div class="lane">
+      <div class="lane-label">birth</div>
+      <div class="chain">
+        <div class="unit"><div class="node">git push<small>judge's own keyboard</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">post-receive hook<small>deploy on commit</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">stack detector<small>composer.json ·<br>package.json · static</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">Docker build<small>pre-baked layers</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">cgroup cage<small>memory + cpu caps</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">Caddy<small>wildcard tls ·<br>local dns</small></div></div>
+      </div>
+    </div>
+    <div class="lane">
+      <div class="lane-label">death</div>
+      <div class="chain">
+        <div class="unit"><div class="node">chaos weapon<small>poison · bomb ·<br>leak · kill -9</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">health fails<small>consecutive-failure threshold</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node hot">RED CODE<small>the wall blares</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">rollback<small>last green image<br>&le;10 s</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node rev">00:07 resurrection<small>green pulse</small></div></div>
+        <div class="unit"><div class="arrow">-&gt;</div><div class="node">death certificate<small>autopsy: 137 · 143</small></div></div>
+      </div>
+    </div>
+    <div class="vconnect"><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span></div>
+    <div class="lane">
+      <div class="lane-label">spine</div>
+      <div class="spinebar">SQLite append-only event spine <small>— every log, probe and version change appended once · WebSocket bus · 1 s pushes</small></div>
+    </div>
+    <div class="vconnect"><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span></div>
+    <div class="lane">
+      <div class="lane-label">sinks</div>
+      <div class="sinks">
+        <div class="sink">status wall</div>
+        <div class="sink">killfeed</div>
+        <div class="sink">incident scrubber</div>
+        <div class="sink">death certificates</div>
+      </div>
+    </div>
+  </div>
+  <ul class="body">
+    <li><strong>The green lock lights offline</strong> — wildcard certificate pre-minted, DNS overridden locally; venue Wi-Fi is never touched.</li>
+  </ul>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 5 · FEASIBILITY & SCOPE ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">Feasibility &amp; Scope</span>
+    <span class="pageno">05 / 08</span>
+  </div>
+  <h1>Our daily stack. The 24 hours go to polish, not learning.</h1>
+  <div class="cols">
+    <div class="col">
+      <table class="build">
+        <tr><td class="t">H0–2</td><td>Event-table foundation; all four chaos types running bare</td></tr>
+        <tr><td class="t">H2–6</td><td>Birth chain: push → hook → build → green light → lock</td></tr>
+        <tr><td class="t">H6–10</td><td>Death chain: injection, threshold, RED CODE, certificates</td></tr>
+        <tr><td class="t">H10–14</td><td>Resurrection chain: green-cache rollback + status wall</td></tr>
+        <tr><td class="t">H14–17</td><td>Incident scrubber; time travel kept minimal by decree</td></tr>
+        <tr><td class="t">H17–18</td><td>Script freeze; audio, certificates, repos pre-baked</td></tr>
+        <tr><td class="t">H18–22</td><td>Full rehearsals incl. judge-stage-fright contingency</td></tr>
+        <tr><td class="t">H22–24</td><td>Stress test, backup images, sleep</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <ul class="body">
+        <li><strong>Stack:</strong> PHP / JS / TS + Docker + CI discipline — every demo move is labeled real-engineering vs theater-wrapper.</li>
+        <li><strong>Images pre-baked</strong> into the local registry before on-site; a sinking build degrades to pre-baked + diff, the audience never knows.</li>
+        <li><strong>Scope:</strong> 9 table-stakes features done harder + 5 signature moves; stretch arsenal (GATE OF GREEN, THE CAGE) unlocks only if all-green at hour 20.</li>
+        <li><strong>Offline law:</strong> our laptops + LAN router + projector; zero third-party APIs, zero cloud.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 6 · IMPACT METRICS ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">Impact Metrics</span>
+    <span class="pageno">06 / 08</span>
+  </div>
+  <h1>Failure becomes data. Resurrection becomes theater.</h1>
+  <div class="grid">
+    <div class="card"><div class="num g">&le;10 s</div><div class="lbl">resurrection window, target 00:07 — rollback to the last green image</div></div>
+    <div class="card"><div class="num">&le;3 s</div><div class="lbl">push to live — pre-baked layers masquerade as a hot start</div></div>
+    <div class="card"><div class="num">4</div><div class="lbl">chaos weapons with zero blast radius — cgroup cages</div></div>
+    <div class="card"><div class="num">100%</div><div class="lbl">deaths recorded — exit-code autopsy, numbered certificates</div></div>
+    <div class="card"><div class="num">30 m</div><div class="lbl">status-wall legibility at distance, 1 s WebSocket pushes</div></div>
+    <div class="card"><div class="num">1</div><div class="lbl">judge's own hand executes the kill — and the hall counts down aloud</div></div>
+  </div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 7 · REFERENCES & ATTRIBUTION ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">References &amp; Attribution</span>
+    <span class="pageno">07 / 08</span>
+  </div>
+  <h1>Built on boring, proven plumbing. Nothing else.</h1>
+  <div class="cols">
+    <div class="col">
+      <ol class="refs">
+        <li>Docker Engine API <span class="src">— docs.docker.com — build, inspect, exec, cgroup caps</span></li>
+        <li>Caddy Server <span class="src">— caddyserver.com — reverse proxy, wildcard TLS via internal CA</span></li>
+        <li>Linux cgroups v2 <span class="src">— kernel.org — memory / CPU isolation cages</span></li>
+        <li>SQLite <span class="src">— sqlite.org — append-only event timeline, WAL mode</span></li>
+        <li>RFC 6455, WebSockets <span class="src">— event bus, 1 s status pushes</span></li>
+        <li>typed.js <span class="src">— typed.js.org — deterministic terminal self-typing</span></li>
+      </ol>
+    </div>
+    <div class="col">
+      <ul class="body">
+        <li><strong>Original work.</strong> All code, design and copy are the team's own, built during the 24-hour raid.</li>
+        <li><strong>Zero third-party APIs.</strong> No cloud, no AI inference, no external services — the platform runs fully offline on our own hardware.</li>
+        <li><strong>Anonymous submission.</strong> This deck carries a codename only, per Round 0 rules.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+<!-- ============ SLIDE 8 · EXTRA — THE DEMO ============ -->
+<div class="page">
+  <div class="topbar">
+    <span class="eyebrow">Extra Slide — The Demo</span>
+    <span class="pageno">08 / 08</span>
+  </div>
+  <h1>Three minutes. One kill. One resurrection. A hall that counts aloud.</h1>
+  <table class="beats">
+    <tr><td class="t">0:00</td><td><strong>Cold open</strong> — one giant line, $ git push; the status wall lights cell by cell</td></tr>
+    <tr><td class="t">0:15</td><td><strong>The hands</strong> — the judge pushes personally; the lock lights in three seconds</td></tr>
+    <tr><td class="t">1:00</td><td><strong>Green gate</strong> — the poisoned build is stopped silently; traffic never blinks</td></tr>
+    <tr><td class="t hot">1:40</td><td><strong>The murder</strong> — RED CODE floods the wall</td></tr>
+    <tr><td class="t hot">2:00</td><td><strong>The window</strong> — the hall counts: ten, nine, eight…</td></tr>
+    <tr><td class="t rev">00:07</td><td><strong>Resurrection</strong> — green pulse; the timer freezes at 00:07</td></tr>
+    <tr><td class="t">2:40</td><td><strong>Autopsy + replay</strong> — the certificate is read aloud; the logs rewind; freeze on the death line</td></tr>
+    <tr><td class="t">OT</td><td><strong>THE ROAR</strong> — three numbered containers; the loudest shout executes the next kill</td></tr>
+  </table>
+  <div class="kicker">You deployed it. You poisoned it. It's still standing. <span class="r">HEROKILL.</span></div>
+  <div class="footbar">
+    <span>HEROKILL — PS-WEB-01</span>
+    <span>Clash of Commits · IEEE RAS VITC · 2026</span>
+  </div>
+</div>
+
+</body>
+</html>

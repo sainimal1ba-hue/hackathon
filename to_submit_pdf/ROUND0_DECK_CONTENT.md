@@ -39,12 +39,13 @@ Kicker: The obvious build stops at the deploy button. We stop at the resurrectio
 
 **Headline:** One append-only event spine, boot to autopsy.
 
-Chain: git push (judge's own keyboard) → bare repo + post-receive hook (deploy on commit) → stack detector (composer.json / package.json / static) → Docker build (pre-baked layers) → cgroup cage runtime (memory + cpu caps) → Caddy (wildcard TLS, local DNS, offline)
+Workflow diagram, four lanes, read top to bottom:
 
-Bus: WebSocket event bus — every log line, health probe and version change is appended once.
-Sinks: status wall · killfeed · incident scrubber · death certificates.
+- **BIRTH** — git push (judge's own keyboard) → post-receive hook (deploy on commit) → stack detector (composer.json · package.json · static) → docker build (pre-baked layers) → cgroup cage (memory + cpu caps) → caddy (wildcard tls · local dns)
+- **DEATH** — chaos weapon (poison · bomb · leak · kill -9) → health fails (consecutive-failure threshold) → RED CODE (the wall blares) → rollback (last green image · ≤10 s) → 00:07 resurrection (green pulse) → death certificate (autopsy: 137 · 143)
+- **SPINE** — SQLite append-only event spine — every log, probe and version change appended once · WebSocket bus · 1 s pushes
+- **SINKS** — status wall · killfeed · incident scrubber · death certificates
 
-- One source of truth: the same SQLite append-only timeline drives the wall, the killfeed, the scrubber and the certificates.
 - The green lock lights offline — wildcard certificate pre-minted, DNS overridden locally; venue Wi-Fi is never touched.
 
 ## Slide 5 — Feasibility & Scope

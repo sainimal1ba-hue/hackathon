@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HEROKILL — System Workflow Diagram</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+  @page { size: 1160px 560px; margin: 0; }
+
+  :root {
+    --ink: #161619;
+    --muted: #6E6E76;
+    --hairline: #E7E7EA;
+    --red: #FF1E27;
+    --green: #00A65A;
+  }
+
+  html, body {
+    margin: 0; padding: 0;
+    width: 1160px;
+    background: #FFFFFF;
+    font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .page {
+    width: 1160px; height: 560px;
+    position: relative;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    padding: 46px 56px 40px 56px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 24px; line-height: 1.2; font-weight: 700;
+    margin: 0 0 26px 0; letter-spacing: -0.01em;
+  }
+  h1 .r { color: var(--red); }
+  h1 .g { color: var(--green); }
+
+  .lane { display: flex; align-items: stretch; gap: 10px; margin-bottom: 8px; }
+  .lane-label {
+    flex: none; width: 48px; align-self: center;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); text-align: right; line-height: 1.5;
+  }
+  .chain { display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0; flex: 1; }
+  .unit { display: flex; align-items: stretch; }
+  .node {
+    box-sizing: border-box; border: 1px solid #D8D8DC; background: #F7F7F8;
+    padding: 9px 11px; font-size: 13px; line-height: 1.3; font-weight: 500;
+    max-width: 156px;
+  }
+  .node small { display: block; font-weight: 400; color: var(--muted); font-size: 10.5px; margin-top: 2px; }
+  .arrow {
+    align-self: center; padding: 0 6px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 13px; color: var(--muted);
+  }
+  .node.hot { border-color: var(--red); color: var(--red); }
+  .node.rev { border-color: var(--green); color: var(--green); }
+  .spinebar {
+    border: 1px solid #D8D8DC; background: #F7F7F8;
+    padding: 11px 14px; font-size: 13px; font-weight: 500; flex: 1;
+  }
+  .spinebar small { color: var(--muted); font-weight: 400; font-size: 11px; }
+  .sinks { display: flex; flex-wrap: wrap; gap: 10px; flex: 1; }
+  .sink {
+    border: 1px solid #D8D8DC; padding: 8px 13px;
+    font-size: 12.5px; font-weight: 500; background: #FFFFFF;
+  }
+  .vconnect {
+    display: flex; justify-content: space-between;
+    height: 16px; margin: 0 24px 8px 58px;
+  }
+  .vtick { width: 1px; height: 16px; background: #C9C9CF; }
+
+  .caption {
+    margin-top: 22px; padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+    font-size: 11.5px; color: var(--muted);
+  }
+
+  @media screen {
+    html { height: auto; display: flex; justify-content: center; background: #FFFFFF; }
+    body { transform-origin: top center; scale: min(1, calc(100vw / 1160)); margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.12); }
+    .page { outline: 1px solid var(--hairline); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">HEROKILL — PS-WEB-01 · System Workflow</div>
+  <h1>One append-only event spine, <span class="g">boot</span> to <span class="r">autopsy</span>.</h1>
+
+  <div class="lane">
+    <div class="lane-label">birth</div>
+    <div class="chain">
+      <div class="unit"><div class="node">git push<small>judge's own keyboard</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">post-receive hook<small>deploy on commit</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">stack detector<small>composer.json ·<br>package.json · static</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">Docker build<small>pre-baked layers</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">cgroup cage<small>memory + cpu caps</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">Caddy<small>wildcard tls ·<br>local dns</small></div></div>
+    </div>
+  </div>
+  <div class="lane">
+    <div class="lane-label">death</div>
+    <div class="chain">
+      <div class="unit"><div class="node">chaos weapon<small>poison · bomb ·<br>leak · kill -9</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">health fails<small>consecutive-failure threshold</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node hot">RED CODE<small>the wall blares</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">rollback<small>last green image<br>&le;10 s</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node rev">00:07 resurrection<small>green pulse</small></div></div>
+      <div class="unit"><div class="arrow">-&gt;</div><div class="node">death certificate<small>autopsy: 137 · 143</small></div></div>
+    </div>
+  </div>
+  <div class="vconnect"><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span></div>
+  <div class="lane">
+    <div class="lane-label">spine</div>
+    <div class="spinebar">SQLite append-only event spine <small>— every log, probe and version change appended once · WebSocket bus · 1 s pushes</small></div>
+  </div>
+  <div class="vconnect"><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span><span class="vtick"></span></div>
+  <div class="lane">
+    <div class="lane-label">sinks</div>
+    <div class="sinks">
+      <div class="sink">status wall</div>
+      <div class="sink">killfeed</div>
+      <div class="sink">incident scrubber</div>
+      <div class="sink">death certificates</div>
+    </div>
+  </div>
+
+  <div class="caption">Deploy it yourself, poison it yourself — every event lands on one spine, and the container comes back in &le;10 s (target 00:07). The green lock lights offline: wildcard certificate pre-minted, DNS overridden locally, venue Wi-Fi never touched.</div>
+</div>
+</body>
+</html>
